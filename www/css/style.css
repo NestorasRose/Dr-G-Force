@@ -1,0 +1,35 @@
+.footer-fixed {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+    line-height: 60px;
+}
+
+/*body{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}*/
+
+.btn-circle{
+    border-radius: 50%;
+}
+
+.text-lightred{
+    color: #ff7775!important;
+}
+
+.bg-ccc{
+    background-color: #ccc;
+}
+
+.nav-red a{
+    color: #dc3545!important;
+}
+
+.nav-red a.active,
+.nav-red a.active:hover {
+    background-color: #dc3545!important;
+    color: #fff!important;
+}
