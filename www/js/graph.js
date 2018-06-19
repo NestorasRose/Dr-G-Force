@@ -15,9 +15,9 @@ function graphInit(){
     var options = {
         high: 12,
         low: -12,
-        // width: document.body.clientWidth,
-        width: chartX.length*50,
-        height: 700,
+        width: 1000,
+        // width: chartX.length*50,
+        height: screen.height-100,
         // As this is axis specific we need to tell Chartist to use whole numbers only on the concerned axis
         // axisY: {
         // onlyInteger: false,
@@ -30,3 +30,25 @@ function graphInit(){
     // is the actual data object. As a third parameter we pass in our custom options.
     new Chartist.Line('.ct-chart', data, options);
 }
+  
+function dw_getScrollOffsets() {
+    var doc = document, w = window;
+    var x, y, docEl;
+    
+    if ( typeof w.pageYOffset === 'number' ) {
+        x = w.pageXOffset;
+        y = w.pageYOffset;
+    } else {
+        docEl = (doc.compatMode && doc.compatMode === 'CSS1Compat')?
+                doc.documentElement: doc.body;
+        x = docEl.scrollLeft;
+        y = docEl.scrollTop;
+    }
+    var all = doc.getElementsByClassName('ct-vertical');
+    for (var i = 0; i < all.length; i++) {
+	  all[i].parentNode.setAttribute("x", 10+x);
+	}
+}
+setInterval(function(){dw_getScrollOffsets()},200)
+  
+  
