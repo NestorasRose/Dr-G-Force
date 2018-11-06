@@ -63,30 +63,36 @@ var initialVal          = null;
 var gforcesYZ           = null;
 var frontback           = [];
 var leftright           = [];
+var overallG            = [];
 var chartX              = [];
+var gravity             = 9.81;
 function updateAcceleration(a) {
     if (initialVal == null) {
 		initialVal = {x:a.x, y:a.y, z:a.z};
-        console.log(initialVal);
 	}
     y = a.y - initialVal.y;
     z = a.z - initialVal.z;
     n = y - z;
+    var fb,lr,overall,ltr;
 	if(a.y !==null){
-        
-        leftright.push(Number(Math.sqrt(a.x*a.x).toFixed(2)));
+        ltr = Number(a.x);
+        lr = ltr.toFixed(2);
+        leftright.push(lr/gravity);
         
 		gforcesYZ = Number(Math.sqrt(z*z + y*y).toFixed(2));
         
 		if(n>0){
-            frontback.push(Number(gforcesYZ).toFixed(2));
+            fb = Number(gforcesYZ).toFixed(2);
+            frontback.push(fb/gravity);
 			document.getElementById('x').style.width = ""+(50+gforcesYZ*5)+"%";
    	 		document.getElementById('y').style.width = ""+(50-gforcesYZ*5)+"%";
 		}else{
-            frontback.push(Math.round(-Number(gforcesYZ).toFixed(2)*2)/2);
+            fb = Math.round(-Number(gforcesYZ).toFixed(2)*2)/2;
+            frontback.push(fb/gravity);
    	 		document.getElementById('y').style.width = ""+(50+gforcesYZ*5)+"%";
    	 		document.getElementById('x').style.width = ""+(50-gforcesYZ*5)+"%";
 		}
+        
         if(a.x>0){
     		document.getElementById('x2').style.width = ""+(50+Math.abs(a.x)*5)+"%";
    	 		document.getElementById('x1').style.width = ""+(50-Math.abs(a.x)*5)+"%";
@@ -94,6 +100,10 @@ function updateAcceleration(a) {
    	 		document.getElementById('x1').style.width = ""+(50+Math.abs(a.x)*5)+"%";
    	 		document.getElementById('x2').style.width = ""+(50-Math.abs(a.x)*5)+"%";
 		}
+        
+        //Calculating overall G forces
+        overall = Math.sqrt(lr*lr+fb*fb);
+        overallG.push(overall/gravity);
 	}
 	if(a.z !== null){
    		document.getElementById('z').style.width = ""+((Math.acos(a.z/initialVal.z)/3.14*180*5).toFixed(2)-6)+"%";
@@ -199,6 +209,7 @@ var toggleAccel = function() {
         var options = {};
         frontback   = [];
         leftright   = [];
+        overallG    = [];
         chartX      = [];
         options.frequency = 200;
         accelerationWatch = navigator.accelerometer.watchAcceleration(

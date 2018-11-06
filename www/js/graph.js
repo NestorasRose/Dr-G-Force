@@ -6,23 +6,30 @@ function graphInit(){
       labels: chartX,
       series: [
         leftright,
-        frontback
+        frontback,
+        overallG
       ]
     }
     
     // As options we currently only set a static size of 300x200 px. We can also omit this and use aspect ratio containers
     // as you saw in the previous example
     var options = {
-        high: 12,
-        low: -12,
-        width: 1000,
+        high: 1.5,
+        low: -1.5,
+        width: chartX.length*70,
         // width: chartX.length*50,
-        height: screen.height-100,
+        height: screen.height-120,
         // As this is axis specific we need to tell Chartist to use whole numbers only on the concerned axis
-        // axisY: {
-        // onlyInteger: false,
-        // offset: 20
-        // }
+        axisY: {
+            labelInterpolationFnc: function(value) {
+              return  value + 'g';
+            }
+        }, 
+        axisX: {
+            labelInterpolationFnc: function(value) {
+              return  value + ' s';
+            }
+        }
     }
     
     // Create a new line chart object where as first parameter we pass in a selector
