@@ -24,6 +24,10 @@
     background-color: #ccc;
 }
 
+.bg-black{
+    background-image: repeating-radial-gradient(#333, #000);
+}
+
 .nav-red a{
     color: #dc3545!important;
 }
@@ -32,4 +36,13 @@
 .nav-red a.active:hover {
     background-color: #dc3545!important;
     color: #fff!important;
+}
+
+.ct-labels span {
+  color: white;
+}
+
+.ct-grids line {
+  color: white;
+  stroke: #ccc;
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="com.example.CarAlysis" version="1.0.0">
-  <name>CarAlysis</name>
+<widget xmlns="http://www.w3.org/ns/widgets" id="com.example.DrGForce" version="1.0.0">
+  <name>Dr G-Force</name>
   <description>Made with Monaca (http://monaca.mobi)</description>
   <author/>
   <content src="index.html"/>
@@ -8,14 +8,10 @@
   <allow-intent href="itms:*"/>
   <allow-intent href="itms-apps:*"/>
   <allow-intent href="tel:*"/>
-  <preference name="Orientation" value="portrait"/>
   <preference name="loglevel" value="DEBUG"/>
   <preference name="AndroidLaunchMode" value="singleTop"/>
   <preference name="ErrorUrl" value=""/>
-  <preference name="Fullscreen" value="true"/>
-  <preference name="KeepRunning" value="true"/>
   <preference name="SplashScreen" value="screen"/>
-  <preference name="SplashScreenDelay" value="1000"/>
   <preference name="AllowInlineMediaPlayback" value="false"/>
   <preference name="BackupWebStorage" value="cloud"/>
   <preference name="FadeSplashScreenDuration" value="250"/>
@@ -27,12 +23,19 @@
   <preference name="PageLength" value="0"/>
   <preference name="PaginationBreakingMode" value="page"/>
   <preference name="PaginationMode" value="unpaginated"/>
+  <preference name="StatusBarOverlaysWebView" value="true"/>
+  <preference name="StatusBarBackgroundColor" value="#000000"/>
   <feature name="LocalStorage">
     <param name="ios-package" value="CDVLocalStorage"/>
   </feature>
   <preference name="UIWebViewDecelerationSpeed" value="normal"/>
-  <preference name="monaca:AndroidIsPackageNameSeparate" value="false"/>
   <platform name="ios">
+    <config-file parent="UIStatusBarHidden" platform="ios" target="*-Info.plist">
+      <true/>
+    </config-file>
+    <config-file parent="UIViewControllerBasedStatusBarAppearance" platform="ios" target="*-Info.plist">
+      <false/>
+    </config-file>
     <config-file platform="ios" target="*-Info.plist" parent="UISupportedInterfaceOrientations">
       <array>
         <string>UIInterfaceOrientationPortrait</string>
@@ -102,7 +105,15 @@
   </platform>
   <preference name="WindowsStorePublisherName" value="My Name"/>
   <preference name="WindowsStoreIdentityName" value="2f5340bb-56fc-bcca-0eda-9d79016077c0"/>
-  <preference name="ios-XCBuildConfiguration-TARGETED_DEVICE_FAMILY" value="1,2"/>
+  <platform name="ios">
+    <preference name="orientation" value="portrait"/>
+  </platform>
+  <preference name="KeepRunning" value="true"/>
+  <preference name="monaca:AndroidIsPackageNameSeparate" value="false"/>
+  <preference name="Orientation" value="portrait"/>
+  <preference name="SplashScreenDelay" value="1000"/>
+  <preference name="Fullscreen" value="true"/>
+  <preference name="ios-XCBuildConfiguration-TARGETED_DEVICE_FAMILY" value="1"/>
   <preference name="AutoHideSplashScreen" value="true"/>
   <preference name="FadeSplashScreen" value="true"/>
   <preference name="ShowSplashScreenSpinner" value="false"/>

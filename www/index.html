@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>PhoneGap</title>
+        <title>Dr G-Force</title>
         <meta name="viewport" content="width=device-width, user-scalable=no">
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
         <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
@@ -25,7 +25,7 @@
         <script type="text/javascript" charset="utf-8"  src="js/graph.js"></script>
         <script type="text/javascript" charset="utf-8"  src="js/calibration.js"></script>
     </head>
-    <body onload="init();" id="stage" class="bg-ccc">
+    <body onload="init();" id="stage" class="bg-black">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 d-none">
@@ -44,8 +44,8 @@
                 <div class="col-xs-12 col-sm-6">
     				<h5 class="text-white text-center"><i class="fa fa-tachometer text-danger" aria-hidden="true"></i> Front - Back</h5>
     				<div class="progress">
-    					<div id="x" class="progress-bar bg-primary" role="progressbar" style="width: 50%;">Back</div>
-    					<div id="y" class="progress-bar bg-info" role="progressbar" style="width: 50%;">Front</div>
+    					<div id="x" class="progress-bar bg-secondary" role="progressbar" style="width: 50%;">Back</div>
+    					<div id="y" class="progress-bar bg-light text-dark" role="progressbar" style="width: 50%;">Front</div>
     				</div>
         			<div class="row mb-2">
         				<div class="col-2 text-left text-white">
@@ -89,43 +89,26 @@
     					</div>
     				</div>
                 </div>
-                <div class="col-xs-12 col-sm-12 mb-4">
-    				<h5 class="text-white text-center"><i class="fa fa-compass text-danger" aria-hidden="true"></i> Body Roll</h5>
-    				<div class="progress">
-    					<div id="z" class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%;"></div>
-    				</div>
-    				<div class="row">
-    					<div class="col-2 text-left text-white">
-    					</div>
-    					<div class="col-2 text-left text-white">
-    						<b>6&#176;</b>
-    					</div>
-    					<div class="col-2 text-left text-white">
-    						<b>12&#176;</b>
-    					</div>
-    					<div class="col-2 text-left text-white">
-    						<b>18&#176;</b>
-    					</div>
-    					<div class="col-2 text-left text-white">
-    						<b>24&#176;</b>
-    					</div>
-    					<div class="col-2 text-left text-white">
-    						<b>30&#176;</b>
-    					</div>
-    				</div>
+                <div class="col-xs-12 col-sm-6 text-center mt-3">
+                    <a class="btn btn-circle btn-danger mt-2" href="javascript:toggleAccel();">
+                        <i id="play-stop-icon" class="fa fa-play-circle fa-3x text-lightred" aria-hidden="true"></i>
+                    </a>
                 </div>
-                <div class="col-xs-12 col-sm-8">
+				<div class="col-xs-6 col-sm-3 text-center mt-3">
+					<h5  class="text-white" id="fb-no">0.00</h5>
+					<i class="fa fa-arrows-v text-danger fa-2x" aria-hidden="true"></i>
+				</div>
+				<div class="col-xs-6 col-sm-3 text-center mt-3">
+					<h5  class="text-white" id="lr-no">0.00</h5>
+					<i class="fa fa-arrows-h text-danger fa-2x" aria-hidden="true"></i>
+				</div>
+                <div class="col-xs-12 col-sm-12 mt-3">
                     <div class="alert alert-danger" role="alert">
                         <div class="row">
                           <div class="col-9 text-center"><strong>Please lock your screen</strong> in order to avoid reading inconsistencies!</div>
                           <div class="col-3 text-center"><i class="fa fa-3x fa-tablet mt-1" aria-hidden="true"></i></div>
                       </div>
                     </div>                    
-                </div>
-                <div class="col-xs-12 col-sm-4 text-center">
-                    <a class="btn btn-circle btn-danger mt-4" href="javascript:toggleAccel();">
-                        <i id="play-stop-icon" class="fa fa-play-circle fa-3x text-lightred" aria-hidden="true"></i>
-                    </a>
                 </div>
             </div>
             <div id="tab-2" class="d-none text-light row">
