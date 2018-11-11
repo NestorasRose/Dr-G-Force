@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns="http://www.w3.org/ns/widgets" id="com.example.DrGForce" version="1.0.0">
   <name>Dr G-Force</name>
-  <description>Made with Monaca (http://monaca.mobi)</description>
+  <description>G force reader for vehicles</description>
   <author/>
   <content src="index.html"/>
   <allow-navigation href="*"/>
@@ -74,6 +74,7 @@
     <splash src="/res/ios/screen/Default-Landscape~ipad.png" width="1024" height="768"/>
     <splash src="/res/ios/screen/Default-Portrait@2x~ipad.png" width="1536" height="2048"/>
     <splash src="/res/ios/screen/Default-Landscape@2x~ipad.png" width="2048" height="1536"/>
+    <icon src="/res/ios/icon/icon-1024.png" width="1024" height="1024"/>
     <config-file platform="ios" parent="CFBundleLocalizations" target="*-Info.plist">
       <array>
         <string>en</string>
@@ -81,41 +82,41 @@
     </config-file>
   </platform>
   <platform name="android">
-    <icon src="/res/android/icon/ldpi.png" density="ldpi"/>
     <icon src="/res/android/icon/mdpi.png" density="mdpi"/>
-    <icon src="/res/android/icon/hdpi.png" density="hdpi"/>
     <icon src="/res/android/icon/xhdpi.png" density="xhdpi"/>
     <icon src="/res/android/icon/xxhdpi.png" density="xxhdpi"/>
     <icon src="/res/android/icon/xxxhdpi.png" density="xxxhdpi"/>
-    <splash src="/res/android/screen/splash-port-ldpi.9.png" density="port-ldpi"/>
-    <splash src="/res/android/screen/splash-port-mdpi.9.png" density="port-mdpi"/>
-    <splash src="/res/android/screen/splash-port-hdpi.9.png" density="port-hdpi"/>
-    <splash src="/res/android/screen/splash-port-xhdpi.9.png" density="port-xhdpi"/>
-    <splash src="/res/android/screen/splash-port-xxhdpi.9.png" density="port-xxhdpi"/>
-    <splash src="/res/android/screen/splash-port-xxxhdpi.9.png" density="port-xxxhdpi"/>
+    <splash src="/res/android/screen/splash-port-mdpi.png" density="port-mdpi"/>
+    <splash src="/res/android/screen/splash-port-ldpi.png" density="port-ldpi"/>
+    <splash src="/res/android/screen/splash-port-hdpi.png" density="port-hdpi"/>
+    <splash src="/res/android/screen/splash-port-xhdpi.png" density="port-xhdpi"/>
+    <splash src="/res/android/screen/splash-port-xxhdpi.png" density="port-xxhdpi"/>
+    <splash src="/res/android/screen/splash-port-xxxhdpi.png" density="port-xxxhdpi"/>
+    <icon src="/res/android/icon/ldpi.png" density="ldpi"/>
+    <icon src="/res/android/icon/hdpi.png" density="hdpi"/>
   </platform>
   <platform name="windows">
-    <icon src="/res/winrt/icon/package_logo_winrt.png" target="StoreLogo"/>
     <icon src="/res/winrt/icon/app_logo_winrt.png" target="Square150x150Logo"/>
     <icon src="/res/winrt/icon/app_small_logo_winrt.png" target="Square30x30Logo"/>
+    <icon src="/res/winrt/icon/package_logo_winrt.png" target="StoreLogo"/>
     <icon src="/res/winrt/icon/app_tile_wide_logo_winrt.png" target="Wide315x150Logo"/>
     <splash src="/res/winrt/screen/app_splash_screen_winrt.png" width="620" height="300"/>
   </platform>
   <platform name="chrome">
     <icon src="/platforms/chrome/icon.png" width="128" height="128"/>
   </platform>
-  <preference name="WindowsStorePublisherName" value="My Name"/>
-  <preference name="WindowsStoreIdentityName" value="2f5340bb-56fc-bcca-0eda-9d79016077c0"/>
-  <preference name="KeepRunning" value="true"/>
-  <preference name="monaca:AndroidIsPackageNameSeparate" value="false"/>
-  <preference name="Orientation" value="portrait"/>
-  <preference name="SplashScreenDelay" value="1000"/>
-  <preference name="Fullscreen" value="true"/>
   <preference name="ios-XCBuildConfiguration-TARGETED_DEVICE_FAMILY" value="1,2"/>
   <preference name="AutoHideSplashScreen" value="true"/>
   <preference name="FadeSplashScreen" value="true"/>
   <preference name="ShowSplashScreenSpinner" value="true"/>
-  <access origin="*"/>
-  <preference name="DisallowOverscroll" value="true"/>
   <preference name="EnableViewportScale" value="false"/>
+  <access origin="*"/>
+  <preference name="KeepRunning" value="true"/>
+  <preference name="monaca:AndroidIsPackageNameSeparate" value="false"/>
+  <preference name="DisallowOverscroll" value="true"/>
+  <preference name="Orientation" value="portrait"/>
+  <preference name="SplashScreenDelay" value="1000"/>
+  <preference name="Fullscreen" value="true"/>
+  <preference name="WindowsStorePublisherName" value="My Name"/>
+  <preference name="WindowsStoreIdentityName" value="2f5340bb-56fc-bcca-0eda-9d79016077c0"/>
 </widget>
