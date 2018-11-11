@@ -1,24 +1,41 @@
 // This is a JavaScript file
 
 
-function graphInit(){
+function graphInit(chart){
+	var lowest = 0;
+	var dataChart;
+
+	if(chart == 'fb'){
+		lowest = -1.5;
+		highest = 1.5;
+		dataChart = frontback;
+	}
+	if(chart == 'lr'){
+		lowest = -1.5;
+		highest = 1.5;
+		dataChart = leftright;
+	}
+	if(chart == 'total'){
+		lowest = 0;
+		highest = 2;
+		dataChart = overallG;
+	}
+	console.log(dataChart)
     var data = {
       labels: chartX,
       series: [
-        leftright,
-        frontback,
-        overallG
+        dataChart
       ]
     }
     
     // As options we currently only set a static size of 300x200 px. We can also omit this and use aspect ratio containers
     // as you saw in the previous example
     var options = {
-        high: 1.5,
-        low: -1.5,
-        width: chartX.length*70,
+        high: highest,
+        low: lowest,
+        width: chartX.length*50,
         // width: chartX.length*50,
-        height: screen.height-120,
+        height: screen.height-160,
         // As this is axis specific we need to tell Chartist to use whole numbers only on the concerned axis
         axisY: {
             labelInterpolationFnc: function(value) {
@@ -56,6 +73,7 @@ function dw_getScrollOffsets() {
 	  all[i].parentNode.setAttribute("x", 10+x);
 	}
 }
+
 setInterval(function(){dw_getScrollOffsets()},200)
   
   

@@ -4,13 +4,13 @@
     width: 100%;
     height: 50px;
     line-height: 60px;
+	border-top: 1px solid #ddd;
 }
 
-/*body{
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center; 
-}*/
+body{
+    font-family: monospace!important;
+	font-weight:600!important;
+}
 
 .btn-circle{
     border-radius: 50%;
@@ -39,10 +39,22 @@
 }
 
 .ct-labels span {
-  color: white;
+  color: black;
 }
 
 .ct-grids line {
-  color: white;
-  stroke: #ccc;
+  color: black;
+  stroke: #444;
+}
+
+svg{
+	background-color: #f8f9fa!important;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+.border-ddd{
+	border-top: 1px solid #ddd;
+}
+.mt-13{
+	margin-top:13vh;
 }

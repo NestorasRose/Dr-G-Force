@@ -100,6 +100,9 @@ function updateAcceleration(a) {
         //Calculating overall G forces
         overall = Math.sqrt(lr*lr+fb*fb);
         overallG.push(overall/gravity);
+
+		//Update acceleroMeter 
+		acceleroMeter(fb/gravity, -lr/gravity)
 	}
 	// if(a.z !== null){
    	// 	document.getElementById('z').style.width = ""+((Math.acos(a.z/initialVal.z)/3.14*180*5).toFixed(2)-6)+"%";
@@ -147,4 +150,3 @@ function init() {
     // document.addEventListener("touchmove", preventBehavior, false);
     document.addEventListener("deviceready", deviceInfo, true);
 }
-
