@@ -5,6 +5,7 @@ var main = {
     overallG            : [],
     chartX              : [],
     gravity             : 9.81,
+    geoCanvasEl         : document.getElementById('geo'),
     accelBtn            : document.getElementById('play-stop-icon'),
     frontback : {
         x1  : document.getElementById('x1'),
@@ -15,6 +16,20 @@ var main = {
         y1  : document.getElementById('y1'),
         y2  : document.getElementById('y2'),
         Array : []
+    },
+    geo : {
+        latitude : [],
+        longitude : [],
+        timestamp : [],
+        x:{
+            max :0,
+            min: 0
+        },
+        y:{
+            max :0,
+            min: 0
+        },
+        multiplier:0
     },
     init : function(){
         // the next line makes it impossible to see Contacts on the HTC Evo since it
@@ -90,7 +105,11 @@ var main = {
             document.getElementById("lr-no").textContent =lr;
             //Update acceleroMeter 
             acceleroMeter(fb/main.gravity, -lr/main.gravity)
-        }
+        };
+
+        //UPDATE Location
+        main.updateLocation()
+
     },
     toggleAccel : function() {
         main.initialVal = null;
@@ -115,6 +134,8 @@ var main = {
             main.accelBtn.classList.remove("fa-play-circle");
             main.accelBtn.classList.add("fa-stop-circle");
             var options = {};
+            main.geo.latitude = [];
+            main.geo.longitude = [];
             main.frontback.Array   = [];
             main.leftright.Array   = [];
             main.overallG    = [];
@@ -125,5 +146,59 @@ var main = {
                         alert("accel fail (" + ex.name + ": " + ex.message + ")");
                     }, options);
         }
+    },
+    updateLocation: function(){
+        var suc = function(p) {
+            main.geo.latitude.push(Number(p.coords.latitude));
+            main.geo.longitude.push(Number(p.coords.longitude));
+            main.geo.timestamp.push(Number((new Date()).getTime()));
+        };
+        var locFail = function() {
+        };
+        navigator.geolocation.getCurrentPosition(suc, locFail);
+    },
+    geoCanvas: function(){
+        
+        var width   = 500;
+        var height  = width;
+
+        main.geo.x.max = Math.max(...main.geo.longitude);
+        main.geo.x.min = Math.min(...main.geo.longitude);
+        main.geo.y.max = Math.max(...main.geo.latitude);
+        main.geo.y.min = Math.min(...main.geo.latitude);
+
+        main.geoCanvasEl.setAttribute('width', width + "px");
+        main.geoCanvasEl.setAttribute('height',height + "px");
+
+        //check whether the vertical or horizonta distance is bigger
+        var distX = main.geo.x.max - main.geo.x.min;
+        var distY = main.geo.y.max - main.geo.y.min;
+        //multiplier 
+        var largestDist;
+        if(distX>=distY){
+            largestDist = distX;
+        }else{
+            largestDist = distY;
+        }
+        //calculate multiplier
+        main.geo.multiplier = width/largestDist;
+
+        function calibrate( num , direction){
+            num = (direction)? (num - main.geo.x.min)*main.geo.multiplier : (num - main.geo.y.min)*main.geo.multiplier;
+            return num;
+        }
+
+        var geoX=main.geoCanvasEl.getContext('2d');
+        for(var i=0;i<main.geo.timestamp.length;i++) {
+            geoX.beginPath();
+        console.log(calibrate(main.geo.latitude[i],0))
+        console.log(calibrate(main.geo.longitude[i],1))
+            geoX.arc(calibrate(main.geo.latitude[i],0) , calibrate(main.geo.longitude[i],1), 2, 0, 2 * Math.PI, false);
+            geoX.fill();
+            geoX.strokeStyle = '#ff0000';
+            geoX.stroke();
+            geoX.closePath();
+        };
+        
     }
 };

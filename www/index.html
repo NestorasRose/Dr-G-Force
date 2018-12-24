@@ -101,8 +101,6 @@
     					</div>
     				</div>
                 </div>
-				<div class="col-12 text-center bg-white border-ddd">
-				</div>
             </div>
             <div id="tab-2" class="d-none">
 				<div class="row">
@@ -119,6 +117,11 @@
 				</div>
             </div>
             <div id="tab-3" class="d-none text-light row">
+				<div class="col-12">
+					<canvas id="geo" class="mt-2 mb-1">
+				</div>
+            </div>
+            <div id="tab-4" class="d-none text-light row">
                 <div class="col-xs-12 col-sm-12 mt-3">
                     <div class="alert alert-danger" role="alert">
                         <div class="row">
@@ -157,14 +160,17 @@
     <footer class="footer-fixed bg-light">
         <div class="container-fluid">
             <div class="row">
-                <a href="javascript:selectTab('tab-1');" class="col-4 text-center"> 
+                <a href="javascript:selectTab('tab-1');" class="col-3 text-center"> 
                     <i id="btn-tab-1" class="fa fa-tachometer fa-2x mt-2" aria-hidden="true" style="color:#555"></i>
                 </a>
-                <a href="javascript:selectTab('tab-2');" class="col-4 text-center">
+                <a href="javascript:selectTab('tab-2');" class="col-3 text-center">
                     <i id="btn-tab-2" class="fa fa-line-chart fa-2x mt-2" aria-hidden="true" style="color:#777"></i>
                 </a>
-                <a href="javascript:selectTab('tab-3');" class="col-4 text-center">
-                    <i id="btn-tab-3" class="fa fa-info fa-2x mt-2" aria-hidden="true" style="color:#777"></i>
+                <a href="javascript:selectTab('tab-3');" class="col-3 text-center">
+                    <i id="btn-tab-3" class="fa fa-map fa-2x mt-2" aria-hidden="true" style="color:#777"></i>
+                </a>
+                <a href="javascript:selectTab('tab-4');" class="col-3 text-center">
+                    <i id="btn-tab-4" class="fa fa-info fa-2x mt-2" aria-hidden="true" style="color:#777"></i>
                 </a>
             </div>
         </div>
