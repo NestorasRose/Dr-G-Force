@@ -10,7 +10,7 @@ function selectTab(elementid) {
     document.getElementById('btn-tab-3').style.color = "#777";
     document.getElementById(elementid).classList.remove("d-none");
     if(elementid=='tab-2'){
-        graphInit('total');
+        graphInit('fb');
     }
     document.getElementById('btn-'+elementid).style.color = "#555";
-}
+};

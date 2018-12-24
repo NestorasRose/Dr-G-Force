@@ -8,21 +8,21 @@ function graphInit(chart){
 	if(chart == 'fb'){
 		lowest = -1.5;
 		highest = 1.5;
-		dataChart = frontback;
+		dataChart = main.frontback.Array;
 	}
 	if(chart == 'lr'){
 		lowest = -1.5;
 		highest = 1.5;
-		dataChart = leftright;
+		dataChart = main.leftright.Array;
 	}
 	if(chart == 'total'){
 		lowest = 0;
 		highest = 2;
-		dataChart = overallG;
+		dataChart = main.overallG;
 	}
 	console.log(dataChart)
     var data = {
-      labels: chartX,
+      labels: main.chartX,
       series: [
         dataChart
       ]
@@ -33,7 +33,7 @@ function graphInit(chart){
     var options = {
         high: highest,
         low: lowest,
-        width: chartX.length*50,
+        width: main.chartX.length*50,
         // width: chartX.length*50,
         height: screen.height-160,
         // As this is axis specific we need to tell Chartist to use whole numbers only on the concerned axis
@@ -59,7 +59,7 @@ function dw_getScrollOffsets() {
     var doc = document, w = window;
     var x, y, docEl;
     
-    if ( typeof w.pageYOffset === 'number' ) {
+    if ( typeof w.pageYOffset === 'number' ) { 
         x = w.pageXOffset;
         y = w.pageYOffset;
     } else {

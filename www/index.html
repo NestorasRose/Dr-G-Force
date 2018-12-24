@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="components/chartistjs/dist/chartist.min.css">
     </head>
-    <body onload="init();" id="stage">
+    <body onload="main.init();" id="stage">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 d-none">
@@ -28,13 +28,12 @@
             <div class="row" id="tab-1">
                 <div class="col-12 text-center bg-white">
                     <h4 class="mt-3">Dr G-Force</h4>
-					<canvas id="accelerometer">
+					<canvas id="accelerometer" class="mt-2 mb-1">
                 </div>
-                <div class="col-xs-12 col-sm-6 bg-light border-ddd">
-    				<h5 class="text-dark text-centermb-2"><i class="fa fa-arrows-v text-danger" aria-hidden="true"></i> Front - Back</h5>
-    				<div class="progress">
-    					<div id="x" class="progress-bar bg-secondary" role="progressbar" style="width: 50%;">Back</div>
-    					<div id="y" class="progress-bar bg-white text-dark" role="progressbar" style="width: 50%;">Front</div>
+                <div class="col-12 bg-light border-ddd">
+    				<div class="progress mt-3">
+    					<div id="x1" class="progress-bar bg-secondary" role="progressbar" style="width: 50%;">Back</div>
+    					<div id="x2" class="progress-bar bg-white text-dark" role="progressbar" style="width: 50%;">Front</div>
     				</div>
         			<div class="row mb-2">
         				<div class="col-2 text-left text-dark">
@@ -54,11 +53,35 @@
     					</div>
     				</div>
                 </div>
-                <div class="col-xs-12 col-sm-6 bg-light border-ddd">
-    				<h5 class="text-dark text-center mt-2 mb-2"><i class="fa fa-arrows-h  text-danger" aria-hidden="true"></i> Left - Right </h5>
-                    <div class="progress">
-                      <div id="x1" class="progress-bar bg-white text-dark" role="progressbar" style="width:50%">Left</div>
-                      <div id="x2" class="progress-bar bg-secondary" role="progressbar" style="width:50%">Right</div>
+				<div class="col-4 border-ddd bg-white">
+					<div class="row">
+						<div class="col-12 text-center">
+							<h3  class="mt-4">F-B</h3>
+						</div>
+						<div class="col-12 text-center text-warning mb-1">
+							<h2  class="mt-3" id="fb-no">0.00</h2>
+						</div>
+					</div>
+				</div>
+				<div class="col-4 text-center bg-white border-ddd pt-2">
+                    <a class="btn btn-circle btn-light  mt-4 pt-2 mb-4" href="javascript:main.toggleAccel();">
+                        <i id="play-stop-icon" class="fa fa-play-circle fa-3x text-lightred" aria-hidden="true"></i>
+                    </a>
+				</div>
+				<div class="col-4 border-ddd bg-white">
+					<div class="row">
+						<div class="col-12 text-center">
+							<h3  class="mt-4">L-R</h3>
+						</div>
+						<div class="col-12 text-center text-danger mb-1">
+							<h2  class="mt-3" id="lr-no">0.00</h2>
+						</div>
+					</div>
+				</div>
+                <div class="col-12 bg-light border-ddd">
+                    <div class="progress mt-3">
+                      <div id="y1" class="progress-bar bg-white text-dark" role="progressbar" style="width:50%">Left</div>
+                      <div id="y2" class="progress-bar bg-secondary" role="progressbar" style="width:50%">Right</div>
                     </div>
     				<div class="row mb-2">
     					<div class="col-2 text-left text-dark">
@@ -78,56 +101,21 @@
     					</div>
     				</div>
                 </div>
-				<div class="col-2 text-left border-ddd">
-					<i class="fa fa-arrows-v  text-danger mt-3" aria-hidden="true"></i>
-				</div>
-				<div class="col-5 text-left border-ddd">
-					<p  class="text-dark mt-2">Front - Back</p>
-				</div>
-				<div class="col-3 text-right border-ddd">
-					<p  class="text-dark mt-2" id="fb-no">0.00</p>
-				</div>
-				<div class="col-2 text-right border-ddd">
-					<p  class="text-dark mt-2">m/s<sup>2</sup></p>
-				</div>
-				<div class="col-2 text-left border-ddd">
-					<i class="fa fa-arrows-h  text-danger mt-3" aria-hidden="true"></i>
-				</div>
-				<div class="col-5 text-left border-ddd">
-					<p  class="text-dark mt-2">Left - Right</p>
-				</div>
-				<div class="col-3 text-right border-ddd">
-					<p  class="text-dark mt-2" id="lr-no">0.00</p>
-				</div>
-				<div class="col-2 text-right border-ddd">
-					<p  class="text-dark mt-2">m/s<sup>2</sup></p>
-				</div>
 				<div class="col-12 text-center bg-white border-ddd">
-                    <a class="btn btn-circle btn-light  mt-3 mb-3" href="javascript:toggleAccel();">
-                        <i id="play-stop-icon" class="fa fa-play-circle fa-3x text-lightred" aria-hidden="true"></i>
-                    </a>
 				</div>
             </div>
             <div id="tab-2" class="d-none">
-				<div class="row text-dark text-center  bg-white mt-2" style="position:fixed">
-					<div class="col-4">
-						<button class="btn btn-circle btn-secondary" onclick="graphInit('total');">
-							<i class="fa fa-square mt-1" aria-hidden="true" style="color:#f4c63d"></i> <div>Total</div>
-						</button>
-					</div>
-					<div class="col-4">
-						<button class="btn btn-circle btn-secondary" onclick="graphInit('fb');">
-							<i class="fa fa-square mt-1" aria-hidden="true" style="color:#f05b4f"></i> <div>F - B</div>
-						</button>
-					</div>
-					<div class="col-4">
-						<button class="btn btn-circle btn-secondary" onclick="graphInit('lr');">
-							<i class="fa fa-square mt-1" aria-hidden="true" style="color:#d70206"></i> <div>L - R</div>
-						</button>
+				<div class="row">
+					<div class="col-12 text-center mt-2">
+						<div class="btn-group" role="group" aria-label="Basic example" style="width:100%">
+							<button type="button" class="btn btn-light" style="width:40%" onclick="graphInit('fb');">Front-Back</button>
+							<button type="button" class="btn btn-danger" style="width:20%" onclick="graphInit('total');">Total</button>
+							<button type="button" class="btn btn-warning" style="width:40%" onclick="graphInit('lr');">Left-Right</button>
+						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="mt-13 ct-chart ct-perfect-fourth"></div>
+					<div class="mt-2 ct-chart ct-perfect-fourth"></div>
 				</div>
             </div>
             <div id="tab-3" class="d-none text-light row">
@@ -170,7 +158,7 @@
         <div class="container-fluid">
             <div class="row">
                 <a href="javascript:selectTab('tab-1');" class="col-4 text-center"> 
-                    <i id="btn-tab-1" class="fa fa-sliders fa-2x mt-2" aria-hidden="true" style="color:#555"></i>
+                    <i id="btn-tab-1" class="fa fa-tachometer fa-2x mt-2" aria-hidden="true" style="color:#555"></i>
                 </a>
                 <a href="javascript:selectTab('tab-2');" class="col-4 text-center">
                     <i id="btn-tab-2" class="fa fa-line-chart fa-2x mt-2" aria-hidden="true" style="color:#777"></i>
@@ -194,5 +182,6 @@
         <script type="text/javascript" charset="utf-8"  src="js/main.js"></script>
         <script type="text/javascript" charset="utf-8"  src="js/tabs.js"></script>
         <script type="text/javascript" charset="utf-8"  src="js/graph.js"></script>
+        <script type="text/javascript" charset="utf-8"  src="js/gps.js"></script>
         <script type="text/javascript" charset="utf-8"  src="js/accelerometer.js"></script>
 </html>

@@ -1,6 +1,6 @@
 //acelerometer canvas
 var canvas 	= document.getElementById("accelerometer");
-var width 	= screen.height/5;
+var width 	= screen.height/3;
 var height 	= width;
 
 canvas.setAttribute('width', width + "px");
